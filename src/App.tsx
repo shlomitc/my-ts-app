@@ -12,6 +12,21 @@ import {
 import { MoveArrowRight } from "monday-ui-react-core/icons";
 
 /**
+ * What do you get from this exercise in Vibe
+ * 1. Foundations - typography, colors, spacing
+ * 2. Base components - Avatar (and group), Link, RadioButton
+ * 3. Layout components - Flex
+ * 4. Assets - Icon
+ * 5. Storybook Docs
+ * 6. Components types
+ * 
+ * Figma tips
+ * 1. Inspector
+ * 2. Components Tree
+ * 3. Measure spaces between items
+ * 4. Links to Storybook
+ * 
+ * 
  * Heading
  * ========
  * What to use
