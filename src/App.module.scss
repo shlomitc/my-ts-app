@@ -5,7 +5,7 @@
   @include font-main();
 }
 
-.subtitle {
+.subtitle, .runningText {
   @include font-general-text();
 }
 
@@ -17,4 +17,15 @@
   padding: 24px;
   border: 1px solid var(--ui-border-color);
   border-radius: var(--spacing-medium)
+}
+
+.viewPermissionsForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-small)
+}
+
+.extenedRadioItem {
+  margin-inline-start: var(--spacing-xl);
+  margin-block-start: var(--spacing-small);
 }
