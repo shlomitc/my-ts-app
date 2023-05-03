@@ -1,10 +1,6 @@
 @import "monday-ui-react-core/dist/main.css";
 @import "node_modules/monday-ui-react-core/src/styles/typography.scss";
 
-.title {
-  @include font-main();
-}
-
 .subtitle, .runningText {
   @include font-general-text();
 }

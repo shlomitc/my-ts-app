@@ -7,6 +7,10 @@ import {
   Link,
   RadioButton,
   Icon,
+  ModalContent,
+  Modal,
+  ModalFooter,
+  Button,
 } from "monday-ui-react-core";
 
 import { MoveArrowRight } from "monday-ui-react-core/icons";
@@ -14,41 +18,44 @@ import { MoveArrowRight } from "monday-ui-react-core/icons";
 /**
  * What do you get from this exercise in Vibe
  * 1. Foundations - typography, colors, spacing
- * 2. Base components - Avatar (and group), Link, RadioButton
+ * 2. Base components - Modal, Avatar (and group), Link, RadioButton
  * 3. Layout components - Flex
  * 4. Assets - Icon
  * 5. Storybook Docs
  * 6. Components types
- * 
+ *
  * Figma tips
  * 1. Inspector
  * 2. Components Tree
  * 3. Measure spaces between items
  * 4. Links to Storybook
- * 
- * 
- * Heading
- * ========
- * What to use
- * ------------
- * Heading component or scss mixin - `font-main()`
- * if using Heading - `type` prop - should be used as an enum
  *
- * Issues
- * ------
- * 1. Heading component exists but it might need an override because no reset for html h1..h6
- * 2. no storybook documentation for the scss mixins
- * 3. scss mixins names are not the same as the figma one
- *
- * Description
+ * 
+ * Modal
  * ===========
  * What to use
  * ------------
- * Not sure yet...
+ * CSS Variables
+ * 
  * Issues
  * ------
  * 1. No component, must use scss mixin.
+ * 2. no storybook documentation for the scss mixins
+ * 3. scss mixins names are not the same as the figma one
+ * 
  *
+ * Description Text
+ * ===========
+ * What to use
+ * ------------
+ * CSS Variables
+ * 
+ * Issues
+ * ------
+ * 1. No component, must use scss mixin.
+ * 2. no storybook documentation for the scss mixins
+ * 3. scss mixins names are not the same as the figma one
+ * 
  * AvatarGroup
  * ===========
  *    <AvatarGroup size={Avatar?.sizes?.SMALL} max={3}>
@@ -119,77 +126,86 @@ import { MoveArrowRight } from "monday-ui-react-core/icons";
 
 function App() {
   return (
-    <Flex
-      gap={Flex.gaps?.LARGE}
-      direction={Flex.directions?.COLUMN}
-      align={Flex.align?.STRETCH}
-    >
-      <Flex
-        gap={Flex.gaps?.XS}
-        direction={Flex.directions?.COLUMN}
-        align={Flex.align?.STRETCH}
-      >
-        <span className={styles.title}>Board permissions</span>
-        <Flex>
-          <span className={styles.subtitle}>
-            Board owners are not restricted by these permissions
-          </span>
-          <AvatarGroup size={Avatar?.sizes?.SMALL} max={3}>
-            {new Array(13).fill(" ").map((_, i) => (
-              <Avatar
-                key={i}
-                type={Avatar?.types?.IMG}
-                ariaLabel={`name-${i}`}
-              />
-            ))}
-          </AvatarGroup>
-          <Link text="Read more" />
-        </Flex>
-      </Flex>
-      <Flex
-        gap={Flex.gaps?.MEDIUM}
-        direction={Flex.directions?.COLUMN}
-        align={Flex.align?.STRETCH}
-      >
-        <span className={styles.sectionTitle}>Viewing permissions</span>
-        <div className={styles.sectionBox}>
-          <form
-            id="radio-buttons-group-4"
-            className={styles.viewPermissionsForm}
+    <Modal show onClose={() => null} title="Board Permissions" width={'752px' as any}>
+      <ModalContent>
+        <Flex
+          gap={Flex.gaps?.LARGE}
+          direction={Flex.directions?.COLUMN}
+          align={Flex.align?.STRETCH}
+        >
+          <Flex>
+            <span className={styles.subtitle}>
+              Board owners are not restricted by these permissions
+            </span>
+            <AvatarGroup size={Avatar?.sizes?.SMALL} max={3}>
+              {new Array(13).fill(" ").map((_, i) => (
+                <Avatar
+                  key={i}
+                  type={Avatar?.types?.IMG}
+                  ariaLabel={`name-${i}`}
+                />
+              ))}
+            </AvatarGroup>
+            <Link text="Read more" />
+          </Flex>
+
+          <Flex
+            gap={Flex.gaps?.MEDIUM}
+            direction={Flex.directions?.COLUMN}
+            align={Flex.align?.STRETCH}
           >
-            <RadioButton
-              text="View all items on the board"
-              name="radio-buttons-group-4"
-            />
-            <Flex
-              direction={Flex.directions?.COLUMN}
-              align={Flex.align?.STRETCH}
-            >
-              <RadioButton
-                text="View only items that are assigned to users or created by them in a “People” column"
-                name="radio-buttons-group-4"
-                defaultChecked
-              />
-              <Flex className={styles.extenedRadioItem} gap={Flex?.gaps?.MEDIUM}>
-                <Flex style={{ flex: "1 0 auto" }} gap={Flex.gaps?.XS}>
-                  <Icon
-                    iconType={Icon?.type?.SVG}
-                    icon={MoveArrowRight}
-                    iconSize={16}
+            <span className={styles.sectionTitle}>Viewing permissions</span>
+            <div className={styles.sectionBox}>
+              <form
+                id="radio-buttons-group-4"
+                className={styles.viewPermissionsForm}
+              >
+                <RadioButton
+                  text="View all items on the board"
+                  name="radio-buttons-group-4"
+                />
+                <Flex
+                  direction={Flex.directions?.COLUMN}
+                  align={Flex.align?.STRETCH}
+                >
+                  <RadioButton
+                    text="View only items that are assigned to users or created by them in a “People” column"
+                    name="radio-buttons-group-4"
+                    defaultChecked
                   />
-                  <span className={styles.runningText}>
-                    Select the specific columns of <b>items</b>
-                  </span>
+                  <Flex
+                    className={styles.extenedRadioItem}
+                    gap={Flex?.gaps?.MEDIUM}
+                  >
+                    <Flex style={{ flex: "1 0 auto" }} gap={Flex.gaps?.XS}>
+                      <Icon
+                        iconType={Icon?.type?.SVG}
+                        icon={MoveArrowRight}
+                        iconSize={16}
+                      />
+                      <span className={styles.runningText}>
+                        Select the specific columns of <b>items</b>
+                      </span>
+                    </Flex>
+                    <Flex style={{ flex: "1 0 auto" }}>
+                      <input style={{ width: "100%" }}></input>
+                    </Flex>
+                  </Flex>
                 </Flex>
-                <Flex style={{ flex: "1 0 auto" }}>
-                  <input style={{ width: "100%" }}></input>
-                </Flex>
-              </Flex>
-            </Flex>
-          </form>
-        </div>
-      </Flex>
-    </Flex>
+              </form>
+            </div>
+          </Flex>
+        </Flex>
+      </ModalContent>
+      <ModalFooter>
+        <Flex gap={Flex.gaps?.MEDIUM} justify={Flex.justify?.END}>
+          <Button kind={Button.kinds?.TERTIARY}>
+            Cancel
+          </Button>
+          <Button>Confirm</Button>
+        </Flex>
+      </ModalFooter>
+    </Modal>
   );
 }
 
