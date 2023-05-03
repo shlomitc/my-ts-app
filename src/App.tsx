@@ -35,13 +35,12 @@ import { MoveArrowRight } from "monday-ui-react-core/icons";
  * ===========
  * What to use
  * ------------
- * CSS Variables
+ * Modal, Modal Content, Modal Footer
  * 
  * Issues
  * ------
- * 1. No component, must use scss mixin.
- * 2. no storybook documentation for the scss mixins
- * 3. scss mixins names are not the same as the figma one
+ * 1. close button tooltip is broken
+ * 2. title is mandatory but type says optional
  * 
  *
  * Description Text
