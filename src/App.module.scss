@@ -1,16 +1,18 @@
-@import "monday-ui-react-core/dist/main.css";
-@import "node_modules/monday-ui-react-core/src/styles/typography.scss";
+:global {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 .subtitle, .runningText {
-  @include font-general-text();
+  font: var(--font-general-label);
 }
 
 .sectionTitle {
-  @include font-subtitle();
+  font: var(--font-h4);
 }
 
 .sectionBox {
-  padding: 24px;
+  padding: var(--spacing-large);
   border: 1px solid var(--ui-border-color);
   border-radius: var(--spacing-medium)
 }
